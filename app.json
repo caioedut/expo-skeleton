@@ -1,6 +1,8 @@
 {
   "expo": {
-    "scheme": "acme",
+    "name": "Expo Skeleton",
+    "slug": "expo-skeleton",
+    "scheme": "expo-skeleton",
     "web": { "bundler": "metro" }
   }
 }
