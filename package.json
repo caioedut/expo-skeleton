@@ -9,8 +9,8 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@react-bulk/core": "^0.2.13",
-    "@react-bulk/native": "^0.2.13",
+    "@react-bulk/core": "^0.2.24",
+    "@react-bulk/native": "^0.2.24",
     "@types/react": "~18.0.24",
     "@types/react-native": "~0.70.6",
     "expo": "~47.0.3",
@@ -27,13 +27,13 @@
     "react-native-safe-area-context": "4.4.1",
     "react-native-screens": "~3.18.0",
     "react-native-svg": "13.4.0",
-    "react-native-web": "~0.18.7",
-    "typescript": "^4.6.3"
+    "react-native-web": "~0.18.7"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
-    "prettier": "^2.8.0"
+    "prettier": "^2.8.1",
+    "typescript": "^4.6.3"
   },
   "resolutions": {
     "metro": "^0.73.1",
