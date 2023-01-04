@@ -9,8 +9,8 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@react-bulk/core": "^0.2.24",
-    "@react-bulk/native": "^0.2.24",
+    "@react-bulk/core": "^0.2.25",
+    "@react-bulk/native": "^0.2.25",
     "@types/react": "~18.0.24",
     "@types/react-native": "~0.70.6",
     "expo": "~47.0.3",
