@@ -1,21 +1,22 @@
-import { Link, Stack } from 'expo-router';
+import { Card, Scrollable, Text } from '@react-bulk/native';
 
-import { Button, Card, Scrollable, Text } from '@react-bulk/native';
+import Head from '@/components/Head';
+import LinkButton from '@/components/LinkButton';
 
-export default function Home() {
+export default function Page() {
   return (
     <>
-      <Stack.Screen options={{ title: 'Home' }} />
+      <Head title="Home" />
 
-      <Scrollable contentInset={3}>
+      <Scrollable contentInset={4}>
         <Card>
           <Text>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam commodi deserunt eum illo incidunt ipsa itaque molestiae
-            molestias, nisi omnis porro provident qui quia quis sequi, sint sit tempora?
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam commodi deserunt eum illo incidunt ipsa
+            itaque molestiae molestias, nisi omnis porro provident qui quia quis sequi, sint sit tempora?
           </Text>
-          <Button component={Link} align="end" href="/settings">
+          <LinkButton align="end" href="/settings" mt={4}>
             Settings
-          </Button>
+          </LinkButton>
         </Card>
       </Scrollable>
     </>

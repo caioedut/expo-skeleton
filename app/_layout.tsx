@@ -1,15 +1,12 @@
-import { Stack } from 'expo-router';
-import ReactBulk from '@react-bulk/core';
+import ReactBulk from '@react-bulk/native';
 
-import light from '../src/themes/light';
-import useScreenOptions from '../src/hooks/useScreenOptions';
+import Layout from '@/components/Layout';
+import light from '@/themes/light';
 
-function Layout() {
-  return <Stack screenOptions={useScreenOptions()} />;
+export default function App() {
+  return (
+    <ReactBulk theme={light}>
+      <Layout />
+    </ReactBulk>
+  );
 }
-
-export default () => (
-  <ReactBulk theme={light}>
-    <Layout />
-  </ReactBulk>
-);
