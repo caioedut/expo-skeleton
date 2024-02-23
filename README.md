@@ -1,9 +1,24 @@
-# Expo Router Example
+# Expo Skeleton
 
-Use `expo-router` to build native navigation using files in the `app/` directory.
+## Ref
 
-## Notes
+- [Expo Router](https://docs.expo.dev/router/introduction)
+- [React Bulk](https://github.com/caioedut/react-bulk)
+- [Lucide Icons](https://lucide.dev)
 
-- [Expo Router: Docs](https://docs.expo.dev/routing/introduction)
-- [Expo Router: Repo](https://github.com/expo/router)
-- [Expo Router: Discussions](https://github.com/expo/router/discussions)
+## CLI
+
+### `yarn dev`
+Run expo in development mode (global `__DEV__` is `true`).
+
+### `yarn start`
+Run expo in production mode (global `__DEV__` is `false`).
+
+### `yarn test`
+Run prettier, eslint and typescript checks.
+
+### `yarn ota`
+Send over-the-air update to Expo EAS.
+
+### `yarn build`
+Send build request to Expo EAS.

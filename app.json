@@ -3,20 +3,23 @@
     "name": "Expo Skeleton",
     "slug": "expo-skeleton",
     "scheme": "expo-skeleton",
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "userInterfaceStyle": "automatic",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.expo.skeleton",
       "supportsTablet": true,
       "config": {
         "usesNonExemptEncryption": false
       }
     },
     "android": {
-    },
-    "web": {
-      "bundler": "metro"
+      "package": "com.expo.skeleton"
     },
     "plugins": [
       "expo-router"

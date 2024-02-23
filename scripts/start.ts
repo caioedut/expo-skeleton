@@ -1,3 +1,5 @@
 import pmex from 'pmex';
 
-pmex(`expo start -c --port ${process.env.PORT}`);
+import 'dotenv-auto';
+
+pmex('npx expo start --no-dev --minify');

@@ -52,27 +52,34 @@ module.exports = {
         ],
         'internal-pattern': ['@/**'],
         'newlines-between': 'always',
-        'read-tsconfig': false,
       },
     ],
 
     'perfectionist/sort-jsx-props': [
       'error',
       {
-        'always-on-top': ['key', 'ref', 'component', 'id'],
-        callback: 'last',
-        shorthand: 'first',
+        'custom-groups': {
+          callback: 'on*',
+          top: ['key', 'ref', 'component', 'id'],
+        },
+        groups: ['top', 'shorthand', 'unknown', 'multiline', 'callback'],
       },
     ],
 
     'perfectionist/sort-objects': [
       'error',
       {
-        'always-on-top': ['id', 'name', 'title', 'label'],
+        'custom-groups': {
+          callback: ['get*', 'on*'],
+          top: ['id', 'name', 'title', 'label'],
+        },
+        groups: ['top', 'unknown', 'multiline', 'callback'],
       },
     ],
 
     radix: ['warn', 'as-needed'],
+
+    'react/jsx-curly-brace-presence': ['error', 'never'],
 
     'react/jsx-no-target-blank': 'off',
 

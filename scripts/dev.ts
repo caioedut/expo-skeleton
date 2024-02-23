@@ -1,7 +1,8 @@
-import { config } from 'dotenv';
 import pmex from 'pmex';
 
-config();
+import 'dotenv-auto';
+
+const args = process.argv.slice(2).join(' ');
 
 pmex({
   npm: `install && npm prune`,
@@ -9,6 +10,6 @@ pmex({
   yarn: `install --check-files`,
 });
 
-pmex('expo install --fix');
+pmex('npx expo install --fix');
 
-pmex(`expo start --port ${process.env.PORT}`);
+pmex(`npx expo start ${args}`);
