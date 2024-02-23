@@ -38,12 +38,12 @@ export default function Icon({ name, color, fill, size, style, weight }: IconPro
   const Component = icons[name];
 
   return (
-    <Component //
+    <Component
       color={color}
-      fill={fill}
       size={size ?? theme.rem()}
       strokeWidth={strokeWidth ?? 2}
       style={jss(style)}
+      {...(fill ? { fill } : {})}
     />
   );
 }
