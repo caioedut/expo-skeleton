@@ -1,0 +1,23 @@
+{
+  "cli": {
+    "version": ">= 4.1.2",
+    "requireCommit": false
+  },
+  "build": {
+    "staging": {
+      "channel": "staging",
+      "distribution": "internal",
+      "developmentClient": true
+    },
+    "production": {
+      "channel": "production"
+    }
+  },
+  "submit": {
+    "production": {
+      "android": {
+        "track": "internal"
+      }
+    }
+  }
+}

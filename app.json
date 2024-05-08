@@ -21,6 +21,9 @@
     "android": {
       "package": "com.expo.skeleton"
     },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
     "plugins": [
       "expo-router"
     ],
@@ -28,8 +31,10 @@
       "tsconfigPaths": true,
       "typedRoutes": true
     },
-    "runtimeVersion": {
-      "policy": "sdkVersion"
+    "extra": {
+      "router": {
+        "origin": false
+      }
     }
   }
 }
