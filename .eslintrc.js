@@ -66,16 +66,31 @@ module.exports = {
       },
     ],
 
+    'perfectionist/sort-object-types': [
+      'error',
+      {
+        'custom-groups': {
+          callback: ['get*', 'on*'],
+          ids: ['id', 'Id', 'id_*', 'Id_*', '*_id', '*_Id', '*Id'],
+          top: ['name', 'title', 'label', 'pathname'],
+        },
+        groups: ['ids', 'top', 'unknown', 'callback', 'multiline'],
+      },
+    ],
+
     'perfectionist/sort-objects': [
       'error',
       {
         'custom-groups': {
           callback: ['get*', 'on*'],
-          top: ['id', 'name', 'title', 'label'],
+          ids: ['id', 'Id', 'id_*', 'Id_*', '*_id', '*_Id', '*Id'],
+          top: ['name', 'title', 'label', 'pathname'],
         },
-        groups: ['top', 'unknown', 'multiline', 'callback'],
+        groups: ['ids', 'top', 'unknown', 'callback', 'multiline'],
       },
     ],
+
+    'prefer-const': ['error', { destructuring: 'all' }],
 
     radix: ['warn', 'as-needed'],
 
@@ -84,6 +99,8 @@ module.exports = {
     'react/jsx-no-target-blank': 'off',
 
     'react/jsx-uses-react': 'off',
+
+    'react/no-unescaped-entities': 'off',
 
     'react/react-in-jsx-scope': 'off',
   },

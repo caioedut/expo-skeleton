@@ -1,9 +1,9 @@
 import { RbkColor, RbkStyle, jss, useTheme } from '@react-bulk/core';
 
 export type IconProps = {
+  name: keyof typeof icons;
   color?: RbkColor;
   mirrored?: boolean;
-  name: keyof typeof icons;
   size?: number | string;
   style?: RbkStyle;
   weight?: 'bold' | 'duotone' | 'fill' | 'light' | 'regular' | 'thin';

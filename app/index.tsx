@@ -1,7 +1,7 @@
-import { Card, Scrollable, Text } from '@react-bulk/native';
+import { Box, Button, Card, Scrollable, Text } from '@react-bulk/native';
 
 import Head from '@/components/Head';
-import LinkButton from '@/components/LinkButton';
+import LinkChild from '@/components/LinkChild';
 
 export default function Page() {
   return (
@@ -14,9 +14,11 @@ export default function Page() {
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquam commodi deserunt eum illo incidunt ipsa
             itaque molestiae molestias, nisi omnis porro provident qui quia quis sequi, sint sit tempora?
           </Text>
-          <LinkButton align="end" href="/settings" mt={4}>
-            Settings
-          </LinkButton>
+          <Box align="end" mt={4}>
+            <LinkChild href="/settings">
+              <Button>Settings</Button>
+            </LinkChild>
+          </Box>
         </Card>
       </Scrollable>
     </>
