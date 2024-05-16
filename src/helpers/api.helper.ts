@@ -1,7 +1,7 @@
-import { AnyObject } from '@react-bulk/core';
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { Options, serialize } from 'object-to-formdata';
-import qs, { BooleanOptional, IStringifyOptions } from 'qs';
+import type { AnyObject } from '@react-bulk/core';
+import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from 'axios';
+import { type Options, serialize } from 'object-to-formdata';
+import qs, { type BooleanOptional, type IStringifyOptions } from 'qs';
 
 import LocalStorage from '@/services/LocalStorage';
 
@@ -82,7 +82,7 @@ export function parseParams(data: AnyObject = {}) {
     }
 
     // Recursive for array or object
-    if (value instanceof Array || value instanceof Object) {
+    if (Array.isArray(value) || value instanceof Object) {
       //if (!(value instanceof FileList) && !(value instanceof File)) {
       value = parseParams(value);
       //}
@@ -94,7 +94,7 @@ export function parseParams(data: AnyObject = {}) {
   return result;
 }
 
-export function getError(err: any, def: string = 'Houve uma falha na requisição.') {
+export function getError(err: any, def = 'Houve uma falha na requisição.') {
   if (typeof err === 'string') {
     return err;
   }

@@ -1,4 +1,4 @@
-import { RbkColor, RbkStyle, jss, useTheme } from '@react-bulk/core';
+import { type RbkColor, type RbkStyle, jss, useTheme } from '@react-bulk/core';
 
 export type IconProps = {
   name: keyof typeof icons;
@@ -31,7 +31,6 @@ export default function Icon({
   return <Component color={theme.color(color)} mirrored={mirrored} size={size} style={jss(style)} weight={weight} />;
 }
 
-/* eslint-disable @typescript-eslint/no-var-requires */
 const icons = {
   House: require('phosphor-react-native/src/icons/House').default,
 };

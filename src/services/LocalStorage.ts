@@ -1,11 +1,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default class LocalStorage {
-  static async clear() {
+const LocalStorage = {
+  async clear() {
     await AsyncStorage.clear();
-  }
+  },
 
-  static async get<Type = any>(key: string, defaultValue?: Type): Promise<Type | undefined> {
+  async get<Type = any>(key: string, defaultValue?: Type): Promise<Type | undefined> {
     try {
       const allKeys = await AsyncStorage.getAllKeys();
 
@@ -14,16 +14,18 @@ export default class LocalStorage {
         const json = JSON.parse(item ?? '');
         return json?.value ?? defaultValue;
       }
-    } catch (err) {}
+    } catch {}
 
     return defaultValue;
-  }
+  },
 
-  static async remove(key: string) {
+  async remove(key: string) {
     await AsyncStorage.removeItem(key);
-  }
+  },
 
-  static async set(key: string, value?: any) {
+  async set(key: string, value?: any) {
     await AsyncStorage.setItem(key, JSON.stringify({ value }));
-  }
-}
+  },
+};
+
+export default LocalStorage;

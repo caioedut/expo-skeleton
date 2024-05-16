@@ -1,4 +1,4 @@
-import { ThemeEditProps } from '@react-bulk/core';
+import type { ThemeEditProps } from '@react-bulk/core';
 
 const light: ThemeEditProps = {
   colors: {

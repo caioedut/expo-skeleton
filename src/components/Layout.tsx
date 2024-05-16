@@ -14,7 +14,7 @@ export default function Layout() {
           colors: {
             background: theme.color('background.secondary'),
             border: theme.color('background.disabled'),
-            card: theme.color('background.primary'),
+            card: theme.color('primary'),
             notification: theme.color('secondary.main'),
             primary: theme.color('primary.main'),
             text: theme.contrast('background.primary'),

@@ -3,13 +3,17 @@
     "name": "Expo Skeleton",
     "slug": "expo-skeleton",
     "scheme": "expo-skeleton",
+    "orientation": "portrait",
+    "userInterfaceStyle": "automatic",
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
     "platforms": [
       "ios",
       "android"
-    ],
-    "userInterfaceStyle": "automatic",
-    "assetBundlePatterns": [
-      "**/*"
     ],
     "ios": {
       "bundleIdentifier": "com.expo.skeleton",
@@ -19,7 +23,11 @@
       }
     },
     "android": {
-      "package": "com.expo.skeleton"
+      "package": "com.expo.skeleton",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
     },
     "runtimeVersion": {
       "policy": "sdkVersion"
@@ -28,7 +36,6 @@
       "expo-router"
     ],
     "experiments": {
-      "tsconfigPaths": true,
       "typedRoutes": true
     },
     "extra": {

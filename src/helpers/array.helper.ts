@@ -28,26 +28,24 @@ export function chunk<T>(items: T[], size: number) {
 export function orderBy<T>(items: T[], attrs: string | string[]) {
   const result = array<T>(items);
 
-  array<string>(attrs)
-    .reverse()
-    .forEach((attr) => {
-      const sortDesc = attr.trim().substring(0, 1) === '-';
+  for (let attr of array<string>(attrs).reverse()) {
+    const sortDesc = attr.trim().substring(0, 1) === '-';
+
+    if (sortDesc) {
+      attr = attr.trim().substring(1);
+    }
+
+    result.sort((a, b) => {
+      // @ts-expect-error
+      const diff = string(a[attr]).localeCompare(string(b[attr]));
 
       if (sortDesc) {
-        attr = attr.trim().substring(1);
+        return diff * -1;
       }
 
-      result.sort((a, b) => {
-        // @ts-expect-error
-        const diff = string(a[attr]).localeCompare(string(b[attr]));
-
-        if (sortDesc) {
-          return diff * -1;
-        }
-
-        return diff;
-      });
+      return diff;
     });
+  }
 
   return result;
 }

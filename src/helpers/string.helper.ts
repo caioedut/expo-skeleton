@@ -11,9 +11,12 @@ export function string(input: any): string {
 }
 
 export function removeSpecial(input: any): string {
-  return string(input)
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
+  return (
+    string(input)
+      .normalize('NFD')
+      // biome-ignore lint: lint/suspicious/noMisleadingCharacterClass
+      .replace(/[\u0300-\u036f]/g, '')
+  );
 }
 
 export function pluralize(count: number, input: any, plural?: string): string {
@@ -108,7 +111,7 @@ export function color(input: any | string) {
 
   for (let i = 0; i < 3; i++) {
     const value = (hash >> (i * 8)) & 0xff;
-    colour += ('00' + value.toString(16)).substr(-2);
+    colour += `00${value.toString(16)}`.substr(-2);
   }
 
   return colour;

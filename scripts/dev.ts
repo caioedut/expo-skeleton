@@ -4,9 +4,9 @@ import 'dotenv-auto';
 
 pmex({
   bun: 'install',
-  npm: `install && npm prune`,
-  pnpm: `install --fix-lockfile`,
-  yarn: `install --check-files`,
+  npm: 'install && npm prune',
+  pnpm: 'install --fix-lockfile',
+  yarn: 'install --check-files',
 });
 
 pmex('npx expo install --fix');

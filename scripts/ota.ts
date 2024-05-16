@@ -1,9 +1,9 @@
-import { execSync } from 'child_process';
+import { execSync } from 'node:child_process';
 import pmex, { args } from 'pmex';
 
 import 'dotenv-auto';
 
-const message = execSync(`git log -1 --pretty=%B`)
+const message = execSync('git log -1 --pretty=%B')
   .toString()
   .replace(/[\r\n]/gm, ' ')
   .trim();
