@@ -1,15 +1,24 @@
 import type { AnyObject } from '@react-bulk/core';
-import axios, { type AxiosInstance, type AxiosRequestConfig, type AxiosResponse } from 'axios';
+
+import axios, {
+  type AxiosInstance,
+  type AxiosRequestConfig,
+  type AxiosResponse,
+  type CreateAxiosDefaults,
+} from 'axios';
 import { type Options, serialize } from 'object-to-formdata';
 import qs, { type BooleanOptional, type IStringifyOptions } from 'qs';
 
 import LocalStorage from '@/services/LocalStorage';
 
-type ApiOptions = {
+export type ApiOptions = {
   baseURL: string;
+  authHeaders?:
+    | ((token: null | string) => CreateAxiosDefaults['headers'] | Promise<CreateAxiosDefaults['headers']>)
+    | CreateAxiosDefaults['headers'];
 };
 
-type ApiInstance = {
+export type ApiInstance = {
   baseURL: string;
   save<T = any, R = AxiosResponse<T>, D = any>(
     url: string,
@@ -19,11 +28,14 @@ type ApiInstance = {
   ): Promise<R>;
 } & AxiosInstance;
 
-export function api({ baseURL }: ApiOptions) {
+export function api({ authHeaders, baseURL, ...axiosConfig }: ApiOptions & CreateAxiosDefaults) {
   const instance = axios.create({
+    ...axiosConfig,
     baseURL,
     paramsSerializer: (params) => queryString(params),
   }) as ApiInstance;
+
+  instance.baseURL = baseURL;
 
   // Save API
   instance.save = (url, id, data?, config?) => {
@@ -32,9 +44,13 @@ export function api({ baseURL }: ApiOptions) {
 
   // Auth Bearer
   instance.interceptors.request.use(async (config) => {
-    const token = await LocalStorage.get<string>('token');
+    const token = (await LocalStorage.get<string>('token')) ?? null;
 
-    if (token && !config.headers.Authorization) {
+    if (typeof authHeaders === 'function') {
+      Object.assign(config.headers, await authHeaders(token));
+    } else if (authHeaders) {
+      Object.assign(config.headers, authHeaders);
+    } else if (token && !config.headers.Authorization) {
       config.headers.Authorization = `Bearer ${token}`;
     }
 
@@ -51,9 +67,10 @@ export function queryString(params: AnyObject = {}, options?: IStringifyOptions<
   });
 }
 
-export function addQueryParam(url: string, params: AnyObject) {
-  const glue = url.includes('?') ? '&' : '?';
-  return `${url}${glue}${queryString(params)}`;
+export function addQueryParam(url: string, params?: AnyObject) {
+  const query = queryString(params);
+  const glue = !query ? '' : url.includes('?') ? '&' : '?';
+  return `${url}${glue}${query}`;
 }
 
 export function formData(data: AnyObject = {}, options: Options = {}) {
@@ -83,9 +100,9 @@ export function parseParams(data: AnyObject = {}) {
 
     // Recursive for array or object
     if (Array.isArray(value) || value instanceof Object) {
-      //if (!(value instanceof FileList) && !(value instanceof File)) {
-      value = parseParams(value);
-      //}
+      if (!['File', 'FileList'].includes(value?.constructor?.name)) {
+        value = parseParams(value);
+      }
     }
 
     result[attr] = value;
@@ -108,10 +125,4 @@ export function getError(err: any, def = 'Houve uma falha na requisição.') {
     err?.message ||
     def
   );
-}
-
-export function urlAddToken(url: string) {
-  const token = LocalStorage.get('token');
-  const glue = url.includes('?') ? '&' : '?';
-  return `${url}${glue}token=${token}`;
 }

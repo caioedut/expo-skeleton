@@ -1,36 +1,22 @@
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { type RbkColor, type RbkStyle, jss, useTheme } from '@react-bulk/core';
 
 export type IconProps = {
-  name: keyof typeof icons;
+  name: keyof typeof MaterialCommunityIcons.glyphMap;
   color?: RbkColor;
-  mirrored?: boolean;
-  size?: number | string;
+  size?: `${number}rem` | number;
   style?: RbkStyle;
-  weight?: 'bold' | 'duotone' | 'fill' | 'light' | 'regular' | 'thin';
 };
 
 /**
- * https://phosphoricons.com/
+ * https://icons.expo.fyi/
  */
-export default function Icon({
-  name,
-  color = 'primary',
-  mirrored,
-  size = '1rem',
-  style,
-  weight = 'regular',
-}: IconProps) {
+export default function Icon({ name, color = 'primary', size = '1rem', style }: IconProps) {
   const theme = useTheme();
 
-  if (typeof size === 'string' && size.endsWith('rem')) {
+  if (typeof size === 'string') {
     size = theme.rem(Number(size.replace('rem', '')));
   }
 
-  const Component = icons[name];
-
-  return <Component color={theme.color(color)} mirrored={mirrored} size={size} style={jss(style)} weight={weight} />;
+  return <MaterialCommunityIcons color={theme.color(color)} name={name} size={size} style={jss(style)} />;
 }
-
-const icons = {
-  House: require('phosphor-react-native/src/icons/House').default,
-};

@@ -11,12 +11,9 @@ export function string(input: any): string {
 }
 
 export function removeSpecial(input: any): string {
-  return (
-    string(input)
-      .normalize('NFD')
-      // biome-ignore lint: lint/suspicious/noMisleadingCharacterClass
-      .replace(/[\u0300-\u036f]/g, '')
-  );
+  return string(input)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '');
 }
 
 export function pluralize(count: number, input: any, plural?: string): string {
@@ -64,7 +61,7 @@ export function mask(
 
   if (pattern === 'phone') {
     input = input.replace(/\D/g, '').replace(/^0+/, '');
-    pattern = input.length > 10 ? '(##) #####-####' : '(##) ####-####';
+    pattern = input.length > 10 ? '(##) # ####-####' : '(##) ####-####';
   }
 
   const defined: Record<string, string> = {
@@ -132,4 +129,9 @@ export function stripTags(input: any | string, allowed?: any | string) {
   return input.replace(commentsAndPhpTags, '').replace(tags, ($0: string, $1: string) => {
     return allowed.indexOf(`<${$1.toLowerCase()}>`) > -1 ? $0 : '';
   });
+}
+
+export function firstLast(input: any) {
+  const split = string(input).split(' ');
+  return `${split.shift() ?? ''} ${split.pop() ?? ''}`.trim();
 }

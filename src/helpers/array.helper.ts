@@ -52,9 +52,9 @@ export function orderBy<T>(items: T[], attrs: string | string[]) {
 
 export function groupBy<T>(items: T[], keyAttr = 'key', titleAttr?: string) {
   const groups: Array<{
-    data: T[];
-    key: PropertyKey;
     title: string;
+    data: T[];
+    key: string;
   }> = [];
 
   for (const item of array<T>(items)) {

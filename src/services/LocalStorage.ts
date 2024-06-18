@@ -5,6 +5,18 @@ const LocalStorage = {
     await AsyncStorage.clear();
   },
 
+  async keys() {
+    return AsyncStorage.getAllKeys();
+  },
+
+  async remove(key: string) {
+    await AsyncStorage.removeItem(key);
+  },
+
+  async set(key: string, value?: any) {
+    await AsyncStorage.setItem(key, JSON.stringify({ value }));
+  },
+
   async get<Type = any>(key: string, defaultValue?: Type): Promise<Type | undefined> {
     try {
       const allKeys = await AsyncStorage.getAllKeys();
@@ -17,14 +29,6 @@ const LocalStorage = {
     } catch {}
 
     return defaultValue;
-  },
-
-  async remove(key: string) {
-    await AsyncStorage.removeItem(key);
-  },
-
-  async set(key: string, value?: any) {
-    await AsyncStorage.setItem(key, JSON.stringify({ value }));
   },
 };
 

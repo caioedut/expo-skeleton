@@ -8,4 +8,9 @@ const message = execSync('git log -1 --pretty=%B')
   .replace(/[\r\n]/gm, ' ')
   .trim();
 
-pmex(`eas update --non-interactive --message="${message}" ${args()._raw}`);
+const params = args({
+  message,
+  'non-interactive': true,
+});
+
+pmex(`eas update ${params.$}`);

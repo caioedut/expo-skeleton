@@ -9,4 +9,9 @@ if (!['main', 'master'].includes(branch)) {
   throw new Error('Submit is allowed only for branches "master" and "main".');
 }
 
-pmex(`eas submit --non-interactive --latest ${args()._raw}`);
+const params = args({
+  latest: true,
+  'non-interactive': true,
+});
+
+pmex(`eas submit --non-interactive --latest ${params.$}`);

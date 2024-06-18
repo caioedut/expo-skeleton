@@ -9,6 +9,11 @@ pmex({
   yarn: 'install --check-files',
 });
 
-pmex('npx expo install --fix');
+pmex('dlx expo install --fix');
 
-pmex(`npx expo start ${args()._raw}`);
+const params = args({
+  c: true,
+  go: true,
+});
+
+pmex(`dlx expo start ${params.$}`);

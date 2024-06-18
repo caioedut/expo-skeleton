@@ -1,5 +1,12 @@
-import pmex from 'pmex';
+import pmex, { args } from 'pmex';
 
-pmex('biome check ./scripts ./src');
+pmex('prettier "{app,scripts,src}/**/*.{js,jsx,ts,tsx}" --check');
 
-pmex('tsc --noEmit --skipLibCheck');
+pmex('eslint "{app,scripts,src}/**/*.{js,jsx,ts,tsx}" --max-warnings=0');
+
+const params = args({
+  noEmit: true,
+  skipLibCheck: true,
+});
+
+pmex(`tsc ${params.$}`);

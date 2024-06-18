@@ -9,4 +9,9 @@ if (!['main', 'master'].includes(branch)) {
   throw new Error('Build is allowed only for branches "master" and "main".');
 }
 
-pmex(`eas build --non-interactive --clear-cache ${args()._raw}`);
+const params = args({
+  'clear-cache': true,
+  'non-interactive': true,
+});
+
+pmex(`eas build ${params.$}`);

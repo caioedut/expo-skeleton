@@ -2,4 +2,9 @@ import pmex, { args } from 'pmex';
 
 import 'dotenv-auto';
 
-pmex(`npx expo start --no-dev --minify ${args()._raw}`);
+const params = args({
+  minify: true,
+  'no-dev': true,
+});
+
+pmex(`dlx expo start ${params.$}`);

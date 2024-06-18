@@ -4,6 +4,7 @@
     "slug": "expo-skeleton",
     "scheme": "expo-skeleton",
     "orientation": "portrait",
+    "primaryColor": "#0000FF",
     "userInterfaceStyle": "automatic",
     "icon": "./assets/images/icon.png",
     "splash": {
@@ -13,7 +14,8 @@
     },
     "platforms": [
       "ios",
-      "android"
+      "android",
+      "web"
     ],
     "ios": {
       "bundleIdentifier": "com.expo.skeleton",
@@ -28,6 +30,11 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
     },
     "runtimeVersion": {
       "policy": "sdkVersion"

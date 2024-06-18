@@ -24,3 +24,12 @@ export function number(input: any): number {
 export function clamp(input: any, min: number, max: number) {
   return Math.min(Math.max(number(input), min), max);
 }
+
+export function currency(input: any, prefix = 'R$ ') {
+  const value = new Intl.NumberFormat('pt-BR', {
+    currency: 'BRL',
+    minimumFractionDigits: 2,
+  }).format(number(input));
+
+  return `${prefix}${value}`;
+}
