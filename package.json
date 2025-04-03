@@ -1,5 +1,5 @@
 {
-  "name": "questify-front",
+  "name": "expo-skeleton",
   "main": "index.js",
   "private": true,
   "scripts": {

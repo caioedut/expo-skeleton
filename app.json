@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "questify-front",
-    "slug": "questify-front",
+    "name": "expo-skeleton",
+    "slug": "expo-skeleton",
     "version": "0.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
