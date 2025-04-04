@@ -1,7 +1,6 @@
 import js from '@eslint/js';
 import perfectionist from 'eslint-plugin-perfectionist';
 import pluginReact from 'eslint-plugin-react';
-import pluginReactCompiler from 'eslint-plugin-react-compiler';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
@@ -57,8 +56,6 @@ export default tseslint.config(
       },
     },
   },
-
-  pluginReactCompiler.configs.recommended,
 
   perfectionist.configs['recommended-natural'],
   {

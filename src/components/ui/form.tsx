@@ -181,7 +181,6 @@ const FormInput = React.forwardRef<React.ElementRef<typeof Input>, FormItemProps
         return {} as React.ComponentRef<typeof Input>;
       }
       return inputRef.current;
-      // eslint-disable-next-line react-compiler/react-compiler
     }, [inputRef.current]);
 
     function handleOnLabelPress() {
@@ -230,7 +229,6 @@ const FormTextarea = React.forwardRef<React.ElementRef<typeof Textarea>, FormIte
         return {} as React.ComponentRef<typeof Textarea>;
       }
       return textareaRef.current;
-      // eslint-disable-next-line react-compiler/react-compiler
     }, [textareaRef.current]);
 
     function handleOnLabelPress() {
@@ -390,7 +388,6 @@ const FormSwitch = React.forwardRef<
       return {} as React.ComponentRef<typeof Switch>;
     }
     return switchRef.current;
-    // eslint-disable-next-line react-compiler/react-compiler
   }, [switchRef.current]);
 
   function handleOnLabelPress() {
