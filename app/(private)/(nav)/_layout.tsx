@@ -24,7 +24,7 @@ const screens: {
     icon: 'home',
   },
   {
-    name: 'settings',
+    name: '(settings)',
     title: 'Ajustes',
     icon: 'cog',
   },
@@ -38,7 +38,7 @@ export default function Layout() {
       {width > 1024 ? (
         <Drawer
           drawerContent={(props) => <DrawerLayout {...props} />}
-          screenOptions={{ drawerActiveTintColor: colors.primary.DEFAULT }}
+          screenOptions={{ drawerActiveTintColor: colors.primary.DEFAULT, headerShown: false }}
         >
           {screens.map(({ name, title, drawerOptions, icon }) => (
             <Drawer.Screen
@@ -55,7 +55,7 @@ export default function Layout() {
           ))}
         </Drawer>
       ) : (
-        <Tabs screenOptions={{ tabBarActiveTintColor: colors.primary.DEFAULT }}>
+        <Tabs screenOptions={{ headerShown: false, tabBarActiveTintColor: colors.primary.DEFAULT }}>
           {screens.map(({ name, title, icon, tabOptions }) => (
             <Tabs.Screen
               key={name}

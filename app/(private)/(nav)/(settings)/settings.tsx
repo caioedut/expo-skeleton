@@ -1,6 +1,6 @@
 import { Pressable, View } from 'react-native';
 
-import { router } from 'expo-router';
+import { Link, router } from 'expo-router';
 
 import Icon from '@/components/Icon';
 import ScreenOptions from '@/components/ScreenOptions';
@@ -40,23 +40,27 @@ export default function Page() {
       <ScreenOptions title="Ajustes" />
 
       <View className="flex-1 p-6 gap-8">
-        <Card className="rounded-full overflow-hidden">
-          <View className="flex flex-row items-center gap-4 p-2">
-            <Avatar className="w-16 h-16" alt="Avatar">
-              <AvatarImage source={require('@/assets/images/rick.jpg')} />
-              <AvatarFallback>
-                <Text>ZN</Text>
-              </AvatarFallback>
-            </Avatar>
-            <View className="flex-1">
-              <Large>{auth?.user?.name}</Large>
-              <Muted>{auth?.user?.email}</Muted>
-            </View>
-            <View className="mr-2">
-              <Icon name="chevron-right" />
-            </View>
-          </View>
-        </Card>
+        <Link asChild href="/profile">
+          <Pressable>
+            <Card className="rounded-full overflow-hidden">
+              <View className="flex flex-row items-center gap-4 p-2">
+                <Avatar className="w-16 h-16" alt="Avatar">
+                  <AvatarImage source={require('@/assets/images/rick.jpg')} />
+                  <AvatarFallback>
+                    <Text>RS</Text>
+                  </AvatarFallback>
+                </Avatar>
+                <View className="flex-1">
+                  <Large>{auth?.user?.name}</Large>
+                  <Muted>{auth?.user?.email}</Muted>
+                </View>
+                <View className="mr-2">
+                  <Icon name="chevron-right" />
+                </View>
+              </View>
+            </Card>
+          </Pressable>
+        </Link>
 
         <Card className="rounded-full overflow-hidden">
           <View className="flex flex-row items-center gap-4 p-2 min-h-[56]">
