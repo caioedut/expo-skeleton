@@ -32,7 +32,6 @@
       "favicon": "./assets/images/favicon.png"
     },
     "experiments": {
-      "reactCompiler": true,
       "typedRoutes": true
     },
     "plugins": [
