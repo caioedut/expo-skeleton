@@ -6,7 +6,6 @@ import { cn } from '@/lib/utils';
 export type IconProps = {
   name: keyof typeof MaterialCommunityIcons.glyphMap;
   className?: string;
-  color?: string;
   size?: number;
 };
 
@@ -22,6 +21,6 @@ cssInterop(MaterialCommunityIcons, {
 /**
  * https://icons.expo.fyi/
  */
-export default function Icon({ name, className, color, size = 18 }: IconProps) {
-  return <MaterialCommunityIcons className={cn('text-primary', className)} color={color} name={name} size={size} />;
+export default function Icon({ name, className, size = 18 }: IconProps) {
+  return <MaterialCommunityIcons className={cn('text-primary', className)} name={name} size={size} />;
 }
