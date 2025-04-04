@@ -5,8 +5,9 @@ import {
   DrawerItemList,
 } from '@react-navigation/drawer';
 import { Image } from 'expo-image';
-import { Link, router } from 'expo-router';
+import { router } from 'expo-router';
 
+import Link from '@/components/Link';
 import NavIcon from '@/components/NavIcon';
 import useAuth from '@/hooks/useAuth';
 import useTheme from '@/hooks/useTheme';

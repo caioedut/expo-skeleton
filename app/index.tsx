@@ -2,8 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 
 import { Image } from 'expo-image';
-import { Link, Redirect } from 'expo-router';
+import { Redirect } from 'expo-router';
 
+import Link from '@/components/Link';
 import Loading from '@/components/Loading';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';

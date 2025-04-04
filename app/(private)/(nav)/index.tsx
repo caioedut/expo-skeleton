@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { View } from 'react-native';
 
 import Animated, { FadeInUp, FadeOutDown, LayoutAnimationConfig } from 'react-native-reanimated';
 
 import Icon from '@/components/Icon';
+import Link from '@/components/Link';
 import ScreenOptions from '@/components/ScreenOptions';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
@@ -13,7 +15,7 @@ import { Text } from '@/components/ui/text';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 export default function Page() {
-  const [progress, setProgress] = React.useState(78);
+  const [progress, setProgress] = useState(78);
 
   function updateProgressValue() {
     setProgress(Math.floor(Math.random() * 100));
@@ -25,6 +27,12 @@ export default function Page() {
 
       <View className="flex-1 justify-center items-center gap-5 p-6 bg-secondary/30">
         <Card className="w-full max-w-sm p-6 rounded-2xl">
+          <Link asChild href="/profile">
+            <Button className="-mt-4 -mr-6 flex-row self-end" variant="link">
+              <Text>View Profile</Text>
+              <Icon name="chevron-right" />
+            </Button>
+          </Link>
           <CardHeader className="items-center">
             <Avatar className="w-24 h-24" alt="Rick Sanchez's Avatar">
               <AvatarImage source={require('@/assets/images/rick.jpg')} />
@@ -72,10 +80,11 @@ export default function Page() {
               </LayoutAnimationConfig>
             </View>
             <Progress className="h-2" indicatorClassName="bg-primary" value={progress} />
-            <View />
-            <Button className="shadow shadow-foreground/5" variant="outline" onPress={updateProgressValue}>
-              <Text>Update</Text>
-            </Button>
+            <View className="mt-4">
+              <Button variant="secondary" onPress={updateProgressValue}>
+                <Text>Update</Text>
+              </Button>
+            </View>
           </CardFooter>
         </Card>
       </View>
