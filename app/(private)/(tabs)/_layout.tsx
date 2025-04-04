@@ -10,14 +10,18 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Início',
-          tabBarIcon: ({ color }) => <Icon color={color} name="home" size={24} />,
+          tabBarIcon: ({ focused }) => (
+            <Icon className={focused ? 'text-primary' : 'text-muted-foreground'} name="home" size={24} />
+          ),
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
           title: 'Ajustes',
-          tabBarIcon: ({ color }) => <Icon color={color} name="cog" size={24} />,
+          tabBarIcon: ({ focused }) => (
+            <Icon className={focused ? 'text-primary' : 'text-muted-foreground'} name="cog" size={24} />
+          ),
         }}
       />
     </Tabs>
