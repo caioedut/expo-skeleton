@@ -48,6 +48,8 @@ export default function Page() {
                   autoComplete="email"
                   label="E-mail"
                   placeholder="name@email.com"
+                  submitBehavior="submit"
+                  onSubmitEditing={() => form.watch('email') && form.setFocus('password')}
                   {...field}
                 />
               )}
@@ -57,7 +59,15 @@ export default function Page() {
               control={form.control}
               name="password"
               render={({ field }) => (
-                <FormInput secureTextEntry autoComplete="password" label="Password" placeholder="********" {...field} />
+                <FormInput
+                  secureTextEntry
+                  autoComplete="password"
+                  label="Password"
+                  placeholder="********"
+                  submitBehavior="submit"
+                  onSubmitEditing={() => form.watch('password') && form.handleSubmit(handleLogin)()}
+                  {...field}
+                />
               )}
             />
 
