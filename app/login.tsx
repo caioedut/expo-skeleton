@@ -29,7 +29,7 @@ export default function Page() {
 
   async function handleLogin({ email, password }: LoginData) {
     await auth.login(email, password);
-    router.replace('/(private)/(tabs)');
+    router.replace('/(private)/(nav)');
   }
 
   return (

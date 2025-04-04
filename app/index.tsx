@@ -19,7 +19,7 @@ export default function Page() {
   }
 
   if (status === 'authenticated') {
-    return <Redirect href="/(private)/(tabs)" />;
+    return <Redirect href="/(private)/(nav)" />;
   }
 
   return (

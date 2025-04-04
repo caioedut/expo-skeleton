@@ -26,6 +26,7 @@ const DARK_THEME: Theme = {
 
 export const ThemeContext = createContext<{
   colorScheme: ColorScheme;
+  navTheme: Theme;
   themePreference: ThemePreference;
   setThemePreference: (colorScheme: ThemePreference) => void;
 }>(null as any);
@@ -72,6 +73,7 @@ export function ThemeProvider({ children }: { children?: ReactElement }) {
     <ThemeContext.Provider
       value={{
         colorScheme,
+        navTheme,
         themePreference,
         setThemePreference,
       }}

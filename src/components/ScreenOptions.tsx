@@ -1,8 +1,8 @@
 import { type NativeStackNavigationOptions } from '@react-navigation/native-stack';
 import { Stack } from 'expo-router';
 
-type Props = NativeStackNavigationOptions;
+export type ScreenOptionsProps = NativeStackNavigationOptions;
 
-export default function ScreenOptions(props: Props) {
+export default function ScreenOptions(props: ScreenOptionsProps) {
   return <Stack.Screen options={{ headerShown: true, ...props }} />;
 }
