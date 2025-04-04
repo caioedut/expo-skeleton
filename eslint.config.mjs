@@ -31,7 +31,7 @@ export default tseslint.config(
       '@typescript-eslint/no-require-imports': [
         'error',
         {
-          allow: ['\\.png$', '\\.jpg$', '\\.jpeg$', '\\.gif$', '\\.svg$'],
+          allow: ['\\.png$', '\\.jpg$', '\\.jpeg$', '\\.gif$', '\\.svg$', '\\.ttf$'],
         },
       ],
       '@typescript-eslint/no-unused-vars': [
