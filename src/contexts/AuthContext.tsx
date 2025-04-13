@@ -36,7 +36,7 @@ export function AuthProvider({ children }: { children?: ReactElement }) {
 
   const status: AuthStatus = useMemo(
     () => (isLoading || isPending ? 'loading' : token && user ? 'authenticated' : 'unauthenticated'),
-    [isLoading, token, user],
+    [isLoading, isPending, token, user],
   );
 
   async function login(email: string, password: string) {
