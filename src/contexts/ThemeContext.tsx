@@ -1,5 +1,5 @@
 import React, { createContext, type ReactElement, useState } from 'react';
-import { Platform, useColorScheme as useColorSchemeRN } from 'react-native';
+import { Platform, useColorScheme as useColorSchemeRN, View } from 'react-native';
 
 import { DarkTheme, DefaultTheme, ThemeProvider as NagivationThemeProvider, Theme } from '@react-navigation/native';
 import { useIsomorphicLayoutEffect } from '@rn-primitives/hooks';
@@ -80,7 +80,7 @@ export function ThemeProvider({ children }: { children?: ReactElement }) {
     >
       <NagivationThemeProvider value={navTheme}>
         <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
-        {children}
+        <View className="flex-1 bg-background">{children}</View>
       </NagivationThemeProvider>
     </ThemeContext.Provider>
   );
