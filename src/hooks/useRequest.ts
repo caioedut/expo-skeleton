@@ -2,10 +2,10 @@ import type { AxiosRequestConfig, Method } from 'axios';
 
 import { useMemo } from 'react';
 
+import { Str } from 'hpr';
 import useSWR, { type SWRConfiguration, useSWRConfig } from 'swr';
 
 import { addQueryParam, type ApiInstance } from '@/helpers/api.helper';
-import { string } from '@/helpers/string.helper';
 import Api from '@/services/Api';
 import { AnyObject } from '@/types/util.type';
 
@@ -39,7 +39,7 @@ export default function useRequest<T>(
   const { cache } = useSWRConfig();
 
   let url: string;
-  let fullKey = useMemo(() => string(key), [key]);
+  let fullKey = useMemo(() => Str.from(key), [key]);
 
   if (fullKey) {
     if (params) {
