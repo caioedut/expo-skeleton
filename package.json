@@ -43,6 +43,7 @@
     "expo-splash-screen": "~0.29.22",
     "expo-status-bar": "~2.0.1",
     "expo-system-ui": "~4.0.9",
+    "hpr": "^0.0.15",
     "nativewind": "^4.1.23",
     "object-to-formdata": "^4.5.1",
     "qs": "^6.14.0",
