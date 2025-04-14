@@ -6,6 +6,7 @@ import axios, {
 } from 'axios';
 import { type Options, serialize } from 'object-to-formdata';
 import qs, { type BooleanOptional, type IStringifyOptions } from 'qs';
+import { ZodError } from 'zod';
 
 import LocalStorage from '@/services/LocalStorage';
 import { AnyObject } from '@/types/util.type';
@@ -72,6 +73,10 @@ export function formData(data: AnyObject = {}, options: Options = {}) {
 export function getError(err: any, def = 'Houve uma falha na requisição.') {
   if (typeof err === 'string') {
     return err;
+  }
+
+  if (err instanceof ZodError) {
+    return err.issues[0]?.message;
   }
 
   return (

@@ -1,20 +1,37 @@
-import React from 'react';
-import { AppState, AppStateStatus } from 'react-native';
+import React, { useEffect } from 'react';
+import { AppState, AppStateStatus, useColorScheme } from 'react-native';
 
-import { PortalHost } from '@rn-primitives/portal';
-import { Slot } from 'expo-router';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SWRConfig } from 'swr';
 
-import { AuthProvider } from '@/contexts/AuthContext';
-import { ThemeProvider } from '@/contexts/ThemeContext';
-
-import '@/styles/global.css';
+import Layout from '@/components/Layout';
+import { ReactBulk } from '@/components/ui';
+import useLocalStorage from '@/hooks/useLocalStorage';
+import dark from '@/themes/dark';
+import light from '@/themes/light';
 
 // Catch any errors thrown by the Layout component.
 export { ErrorBoundary } from 'expo-router';
 
 export default function RootLayout() {
+  const systemColorScheme = useColorScheme() || 'dark';
+
+  const [themePreference, setThemePreference, isPendingThemePreference] = useLocalStorage<'dark' | 'light' | 'system'>(
+    'themePreference',
+  );
+
+  const colorScheme = themePreference === 'system' ? systemColorScheme : themePreference;
+
+  useEffect(() => {
+    if (isPendingThemePreference) return;
+    if (themePreference) return;
+    setThemePreference('system');
+  }, [themePreference, isPendingThemePreference]);
+
+  if (isPendingThemePreference) {
+    return null;
+  }
+
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SWRConfig
@@ -41,12 +58,9 @@ export default function RootLayout() {
           },
         }}
       >
-        <ThemeProvider>
-          <AuthProvider>
-            <Slot />
-          </AuthProvider>
-        </ThemeProvider>
-        <PortalHost />
+        <ReactBulk theme={colorScheme === 'dark' ? dark : light}>
+          <Layout />
+        </ReactBulk>
       </SWRConfig>
     </GestureHandlerRootView>
   );
