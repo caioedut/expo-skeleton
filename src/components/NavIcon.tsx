@@ -1,10 +1,12 @@
+import { RbkColor } from '@react-bulk/core';
+
 import Icon, { IconProps } from '@/components/Icon';
 
 export type NavIconProps = {
   name: IconProps['name'];
-  focused: boolean;
+  color?: RbkColor;
 };
 
-export default function NavIcon({ name, focused }: NavIconProps) {
-  return <Icon className={focused ? 'text-primary' : 'text-muted-foreground'} name={name} size={24} />;
+export default function NavIcon({ name, color }: NavIconProps) {
+  return <Icon color={color} name={name} size={24} />;
 }

@@ -1,19 +1,15 @@
 import React from 'react';
-import { ActivityIndicator, View } from 'react-native';
 
 import { Redirect, Stack } from 'expo-router';
 
+import { Loading } from '@/components/ui';
 import useAuth from '@/hooks/useAuth';
 
 export default function Layout() {
   const { status } = useAuth();
 
   if (status === 'loading') {
-    return (
-      <View className="flex items-center justify-center">
-        <ActivityIndicator color="#6b7280" size="large" />
-      </View>
-    );
+    return <Loading flex />;
   }
 
   if (status === 'unauthenticated') {

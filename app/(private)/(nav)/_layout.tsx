@@ -2,6 +2,7 @@ import type { BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
 
 import { useWindowDimensions } from 'react-native';
 
+import { useTheme } from '@react-bulk/core';
 import { DrawerNavigationOptions } from '@react-navigation/drawer';
 import { Tabs } from 'expo-router';
 import { Drawer } from 'expo-router/drawer';
@@ -9,7 +10,6 @@ import { Drawer } from 'expo-router/drawer';
 import DrawerLayout from '@/components/DrawerLayout';
 import { IconProps } from '@/components/Icon';
 import NavIcon from '@/components/NavIcon';
-import colors from '@/styles/colors';
 
 const screens: {
   name: string;
@@ -31,6 +31,7 @@ const screens: {
 ];
 
 export default function Layout() {
+  const theme = useTheme();
   const { width } = useWindowDimensions();
 
   return (
@@ -38,7 +39,7 @@ export default function Layout() {
       {width > 1024 ? (
         <Drawer
           drawerContent={(props) => <DrawerLayout {...props} />}
-          screenOptions={{ drawerActiveTintColor: colors.primary.DEFAULT, headerShown: false }}
+          screenOptions={{ drawerActiveTintColor: theme.color('primary'), headerShown: false }}
         >
           {screens.map(({ name, title, drawerOptions, icon }) => (
             <Drawer.Screen
@@ -46,7 +47,7 @@ export default function Layout() {
               name={name}
               options={{
                 title,
-                drawerIcon: ({ focused }) => <NavIcon focused={focused} name={icon} />,
+                drawerIcon: ({ color }) => <NavIcon color={color} name={icon} />,
                 drawerType: 'permanent',
                 headerLeft: () => null,
                 ...drawerOptions,
@@ -55,14 +56,14 @@ export default function Layout() {
           ))}
         </Drawer>
       ) : (
-        <Tabs screenOptions={{ headerShown: false, tabBarActiveTintColor: colors.primary.DEFAULT }}>
+        <Tabs screenOptions={{ headerShown: false, tabBarActiveTintColor: theme.color('primary') }}>
           {screens.map(({ name, title, icon, tabOptions }) => (
             <Tabs.Screen
               key={name}
               name={name}
               options={{
                 title,
-                tabBarIcon: ({ focused }) => <NavIcon focused={focused} name={icon} />,
+                tabBarIcon: ({ color }) => <NavIcon color={color} name={icon} />,
                 ...tabOptions,
               }}
             />

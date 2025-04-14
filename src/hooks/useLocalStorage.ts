@@ -1,6 +1,5 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { useIsomorphicLayoutEffect } from '@rn-primitives/hooks';
 import { useStoreState } from 'react-state-hooks';
 
 import LocalStorage from '@/services/LocalStorage';
@@ -27,7 +26,7 @@ export default function useLocalStorage<T>(key: string, initialValue?: T) {
     [key, _setState],
   );
 
-  useIsomorphicLayoutEffect(() => {
+  useEffect(() => {
     LocalStorage.get<T>(key)
       .catch(() => undefined)
       .then((value) => {
